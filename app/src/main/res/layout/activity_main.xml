@@ -9,12 +9,12 @@
     tools:context=".WorldCapitalizer" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imgView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:scaleType="center"
-        android:src="@drawable/world_map_cropped" />
+        android:src="@drawable/cyprus" />
 
     <TextView
         android:id="@+id/txtCountry"
@@ -53,7 +53,7 @@
         android:id="@+id/btnNext"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
+        android:layout_above="@+id/imgView"
         android:layout_alignParentRight="true"
         android:onClick="nextCountry"
         android:text="@string/btnNext" />
