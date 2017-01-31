@@ -241,7 +241,6 @@ public class MainActivity extends Activity {
         //mode: 1 = ask country; 2 = ask capital
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

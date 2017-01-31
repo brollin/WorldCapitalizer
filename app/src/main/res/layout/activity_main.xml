@@ -10,19 +10,26 @@
     tools:context=".WorldCapitalizer"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/txtPromptLabel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/welcome_prompt"
+        android:textSize="24sp" />
+
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:scaleType="center"
-        android:src="@drawable/cyprus" />
+        android:scaleType="center" />
 
     <TextView
         android:id="@+id/txtMainText"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:text="@string/start_text"
         android:textAlignment="gravity"
         android:textSize="24sp" />
 
@@ -31,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="nextCountry"
-        android:text="@string/btnNext" />
+        android:text="@string/start" />
 
     <Button
         android:id="@+id/btnCountryCapitalSwitch"
@@ -50,12 +57,28 @@
         android:textSize="20sp" />
 
     <TextView
+        android:id="@+id/txtCapitalLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/capital_label"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/txtCapital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/blank"
+        android:textSize="22sp" />
+
+    <TextView
         android:id="@+id/txtCountryLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="@string/country_label"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtCountry"
@@ -63,23 +86,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:gravity="center"
-        android:text="@string/last_country_answer"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/txtCapitalLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="@string/capital_label"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/txtCapital"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="@string/last_capital_answer"
-        android:textSize="28sp" />
+        android:text="@string/blank"
+        android:textSize="22sp" />
 
 </LinearLayout>
