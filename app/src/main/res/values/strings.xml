@@ -2,8 +2,8 @@
     <string name="app_name">WorldCapitalizer</string>
     <string name="start">Start</string>
     <string name="next">Next</string>
-    <string name="start_text">Click button to begin</string>
     <string name="ask_capital">Ask Capital</string>
+    <string name="ask_country">Ask Country</string>
     <string name="previous_answer">Previous Answer</string>
     <string name="country_label">Country:</string>
     <string name="capital_label">Capital:</string>

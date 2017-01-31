@@ -10,14 +10,10 @@
     tools:context=".WorldCapitalizer"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtPromptLabel"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="@string/welcome_prompt"
-        android:textSize="24sp" />
+    <Spinner
+        android:id="@+id/sprCountryCapital"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/imgView"
@@ -28,24 +24,17 @@
     <TextView
         android:id="@+id/txtMainText"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:gravity="center"
         android:textAlignment="gravity"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="nextCountry"
+        android:onClick="nextCountryCapital"
         android:text="@string/start" />
-
-    <Button
-        android:id="@+id/btnCountryCapitalSwitch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="switchCountryCapital"
-        android:text="@string/ask_capital" />
 
     <TextView
         android:id="@+id/txtAnswerLabel"

@@ -4,19 +4,24 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class MainActivity extends Activity {
 
     public String[] countries;
     public String[] capitals;
-    public String[] temp;
-    public boolean[] picked;
+
+    public final int ASK_COUNTRY = 1;
+    public final int ASK_CAPITAL = 2;
     public int mode;
+
     public int maxIndex;
     public int lastIndex;
     String link;
@@ -220,30 +225,30 @@ public class MainActivity extends Activity {
             R.drawable.zambia,
             R.drawable.zimbabwe
     };
-    private int currImage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize all variables here
+        // Initialize all variables here
         countries = getResources().getStringArray(R.array.countries);
         capitals = getResources().getStringArray(R.array.capitals);
-        temp = countries;
         maxIndex = countries.length;
-        picked = new boolean[maxIndex]; // will initialize all values to zero (false)
         lastIndex = -1;
-        mode = 1;
+        mode = ASK_CAPITAL;
 
-        //mode: 1 = ask country; 2 = ask capital
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        // Initialize the spinner with mode options
+        Spinner spinner = (Spinner) findViewById(R.id.sprCountryCapital);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.country_or_capital, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        // Create listener for responding to user actions
+        spinner.setOnItemSelectedListener(new SpinnerActivity(this));
     }
 
     private String encode(String s) {
@@ -254,36 +259,23 @@ public class MainActivity extends Activity {
 
     public void switchCountryCapital(View view) {
 
-        Button btnCountryCapitalSwitch = (Button) findViewById(R.id.btnCountryCapitalSwitch);
-        TextView txtPromptLabel = (TextView) findViewById(R.id.txtPromptLabel);
+        // TODO: implement mode = mode % 2
+        if(mode == ASK_COUNTRY)
+            mode = ASK_CAPITAL;
+        else
+            mode = ASK_COUNTRY;
 
-        if(mode == 1) {
-            mode = 2;
-            btnCountryCapitalSwitch.setText("Ask Country");
-            txtPromptLabel.setText(R.string.ask_country_label);
-        }
-        else {
-            mode = 1;
-            btnCountryCapitalSwitch.setText("Ask Capital");
-            txtPromptLabel.setText(R.string.ask_capital_label);
-        }
-
-        // will switch the contents of the two String arrays containing capitals and countries
-        temp = countries;
-        countries = capitals;
-        capitals = temp;
-
-        nextCountry(null);
+        nextCountryCapital(view);
     }
 
-    public void nextCountry(View view) {
+    public void nextCountryCapital(View view) {
 
         TextView txtMain = (TextView) findViewById(R.id.txtMainText);
         TextView txtCountry = (TextView) findViewById(R.id.txtCountry);
         TextView txtCapital = (TextView) findViewById(R.id.txtCapital);
 
-        // if the last index is not -1, then this is not the first country
-        // put the last country's name and capital in the 'answer box' below
+        // If the last index is not -1, then this is not the first country
+        //  put the last country's name and capital in the 'answer box' below
         if (lastIndex > -1) {
             link = "<a href=\'http://en.wikipedia.org/w/index.php?title=Special:Search&search=" +
                     encode(countries[lastIndex]) + "\'>" + countries[lastIndex] + "</a>";
@@ -295,29 +287,39 @@ public class MainActivity extends Activity {
             txtCapital.setMovementMethod(LinkMovementMethod.getInstance());
             txtCapital.setText(Html.fromHtml(link));
         }
-        // otherwise, this is the first country
+        // Otherwise, this is the first country
         else {
-            TextView txtPromptLabel = (TextView) findViewById(R.id.txtPromptLabel);
-            txtPromptLabel.setText(R.string.ask_capital_label);
-
+            // Change button text from Start to Next
             Button btnNext = (Button) findViewById(R.id.btnNext);
             btnNext.setText(R.string.next);
         }
 
-        // set a new country that has not been used before
-        try {
-            do {
-                lastIndex = (int)(Math.random() * (maxIndex + 1));
-                //set pic to lastIndex
-                final ImageView imgView = (ImageView) findViewById(R.id.imgView);
-                imgView.setImageResource(images[lastIndex]);
-            } while (picked[lastIndex]);
-            //picked[lastIndex] = true; // TODO what to do when reached end?
-        }
-        catch(Exception ex) {}
-        //txtMain.setText(countries[lastIndex]);
-        txtMain.setText(countries[lastIndex]);
+        // Set a new country or capital
+        lastIndex = (int)(Math.random() * (maxIndex + 1));
+        final ImageView imgView = (ImageView) findViewById(R.id.imgView);
+        imgView.setImageResource(images[lastIndex]);
+
+        if (mode == ASK_COUNTRY)
+            txtMain.setText(countries[lastIndex]);
+        else
+            txtMain.setText(capitals[lastIndex]);
 
     }
 
+    public class SpinnerActivity extends Activity implements OnItemSelectedListener {
+        private MainActivity parentActivity;
+
+        public SpinnerActivity(MainActivity activity) {
+            super();
+            this.parentActivity = activity;
+        }
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            parentActivity.switchCountryCapital(view);
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }
+    }
 }
