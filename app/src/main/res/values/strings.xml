@@ -3,6 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="btnNext">Next</string>
-    <string name="action_settings">wut</string>
     <string name="start_text">Click button to begin</string>
+    <string name="ask_capital">Ask Capital</string>
+    <string name="previous_answer">Previous Answer</string>
+    <string name="country_label">Country:</string>
+    <string name="capital_label">Capital:</string>
+    <string name="last_country_answer">LAST COUNTRY ANSWER</string>
+    <string name="last_capital_answer">LAST CAPITAL ANSWER</string>
 </resources>

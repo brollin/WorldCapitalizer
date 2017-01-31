@@ -1,49 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".WorldCapitalizer" >
+    tools:context=".WorldCapitalizer"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="150dp"
         android:scaleType="center"
         android:src="@drawable/cyprus" />
 
     <TextView
-        android:id="@+id/txtCountry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtMainText"
-        android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:text="COUNTRY"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/txtCapital"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtMainText"
-        android:layout_below="@+id/txtCountry"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="CAPITAL"
-        android:textAlignment="gravity"
-        android:textSize="28sp" />
-
-    <TextView
         android:id="@+id/txtMainText"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_above="@+id/btnNext"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="@string/start_text"
         android:textAlignment="gravity"
@@ -51,20 +28,58 @@
 
     <Button
         android:id="@+id/btnNext"
-        android:layout_width="140dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imgView"
-        android:layout_alignParentRight="true"
         android:onClick="nextCountry"
         android:text="@string/btnNext" />
 
     <Button
         android:id="@+id/btnCountryCapitalSwitch"
-        android:layout_width="140dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtMainText"
-        android:layout_below="@+id/txtMainText"
         android:onClick="switchCountryCapital"
-        android:text="Ask Capital" />
+        android:text="@string/ask_capital" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/txtAnswerLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/previous_answer"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCountryLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/country_label"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/last_country_answer"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtCapitalLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/capital_label"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/txtCapital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/last_capital_answer"
+        android:textSize="28sp" />
+
+</LinearLayout>
