@@ -6,7 +6,6 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.View;
-import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
@@ -20,7 +19,6 @@ public class MainActivity extends Activity {
     public int mode;
     public int maxIndex;
     public int lastIndex;
-    URLUtil u;
     String link;
 
     private Integer images[] = {
@@ -257,14 +255,17 @@ public class MainActivity extends Activity {
     public void switchCountryCapital(View view) {
 
         Button btnCountryCapitalSwitch = (Button) findViewById(R.id.btnCountryCapitalSwitch);
+        TextView txtPromptLabel = (TextView) findViewById(R.id.txtPromptLabel);
 
         if(mode == 1) {
             mode = 2;
             btnCountryCapitalSwitch.setText("Ask Country");
+            txtPromptLabel.setText(R.string.ask_country_label);
         }
         else {
             mode = 1;
             btnCountryCapitalSwitch.setText("Ask Capital");
+            txtPromptLabel.setText(R.string.ask_capital_label);
         }
 
         // will switch the contents of the two String arrays containing capitals and countries
@@ -284,13 +285,23 @@ public class MainActivity extends Activity {
         // if the last index is not -1, then this is not the first country
         // put the last country's name and capital in the 'answer box' below
         if (lastIndex > -1) {
-            link = "<a href=\'http://en.wikipedia.org/w/index.php?title=Special:Search&search=" +  encode(countries[lastIndex]) + "\'>" + countries[lastIndex] + "</a>";
+            link = "<a href=\'http://en.wikipedia.org/w/index.php?title=Special:Search&search=" +
+                    encode(countries[lastIndex]) + "\'>" + countries[lastIndex] + "</a>";
             txtCountry.setMovementMethod(LinkMovementMethod.getInstance());
             txtCountry.setText(Html.fromHtml(link));
 
-            link = "<a href=\'http://en.wikipedia.org/w/index.php?title=Special:Search&search=" +  encode(capitals[lastIndex]) + "\'>" + capitals[lastIndex] + "</a>";
+            link = "<a href=\'http://en.wikipedia.org/w/index.php?title=Special:Search&search=" +
+                    encode(capitals[lastIndex]) + "\'>" + capitals[lastIndex] + "</a>";
             txtCapital.setMovementMethod(LinkMovementMethod.getInstance());
             txtCapital.setText(Html.fromHtml(link));
+        }
+        // otherwise, this is the first country
+        else {
+            TextView txtPromptLabel = (TextView) findViewById(R.id.txtPromptLabel);
+            txtPromptLabel.setText(R.string.ask_capital_label);
+
+            Button btnNext = (Button) findViewById(R.id.btnNext);
+            btnNext.setText(R.string.next);
         }
 
         // set a new country that has not been used before
