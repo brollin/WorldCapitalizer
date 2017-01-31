@@ -218,7 +218,6 @@ public class MainActivity extends Activity {
             R.drawable.vatican_city,
             R.drawable.venezuela,
             R.drawable.vietnam,
-            R.drawable.world_map_cropped,
             R.drawable.yemen,
             R.drawable.zambia,
             R.drawable.zimbabwe
