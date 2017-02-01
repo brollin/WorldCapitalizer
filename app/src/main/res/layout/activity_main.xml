@@ -34,71 +34,76 @@
         android:onClick="nextCountryCapital"
         android:text="@string/start" />
 
-    <TextView
-        android:id="@+id/txtAnswerLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="@string/previous_answer"
-        android:textSize="20sp" />
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtCapitalLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/capital_label"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/txtCapital"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="@string/blank"
-            android:textSize="22sp" />
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="bottom"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtCountryLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/country_label"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/txtCountry"
+            android:id="@+id/txtAnswerLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:gravity="start"
+            android:text="@string/previous_answer"
+            android:textSize="20sp" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/blank"
-            android:textSize="22sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCapitalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/capital_label"
+                android:textSize="16sp" />
+
+            <com.vj.widgets.AutoResizeTextView
+                android:id="@+id/txtCapital"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ellipsize="none"
+                android:maxLines="2"
+                android:text="@string/blank"
+                android:textSize="34sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCountryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/country_label"
+                android:textSize="16sp" />
+
+            <com.vj.widgets.AutoResizeTextView
+                android:id="@+id/txtCountry"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ellipsize="none"
+                android:maxLines="2"
+                android:text="@string/blank"
+                android:textSize="34sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <!-- Example AutoResizeTextView -->
     <!--<com.vj.widgets.AutoResizeTextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
