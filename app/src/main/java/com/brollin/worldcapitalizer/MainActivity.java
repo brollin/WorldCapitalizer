@@ -295,7 +295,7 @@ public class MainActivity extends Activity {
         }
 
         // Set a new country or capital
-        lastIndex = (int)(Math.random() * (maxIndex + 1));
+        lastIndex = (int)(Math.random() * (maxIndex));
         final ImageView imgView = (ImageView) findViewById(R.id.imgView);
         imgView.setImageResource(images[lastIndex]);
 
